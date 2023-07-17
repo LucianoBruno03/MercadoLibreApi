@@ -1,0 +1,131 @@
+.nav-header{
+    background-color: #FFF159;
+    padding: 15px;
+}
+
+.modal-header{
+    background-color: #FFF159;
+    padding: 15px;
+    color:#202124;
+}
+
+
+.input-container {
+    position: relative;
+  }
+  
+  .custom-input {
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #fff;
+
+  }
+
+  .custom-input::placeholder {
+    color: #ffffff00;
+  }
+  
+  .input-label {
+    position: absolute;
+    top: 15px;
+    left: 13px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: #495057;
+  }
+  
+  .custom-input:not(:placeholder-shown) + .input-label {
+    top: -10px;
+    font-size: 12px;
+    color: #495057;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  body {
+    background: #eee;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+    font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.35
+}
+
+main[role=main] {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+    font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.35
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#btnModificar{
+  background-color: #233074;
+}
+#btnModificar svg{
+  fill: #fff;
+}
+
+#btnInvertirEstado{
+  background-color: #233074;
+}
+#btnInvertirEstado svg{
+  fill: #fff;
+}
+
+.bg-color-primary{
+  background-color: #FFD000;
+  color: #233074;
+}
+
+.bg-color-primary:hover{
+  background-color: #ac8c01;
+  color: #ffffff;
+}
+
+.bg-color-secondary{
+  background-color: #233074;
+  color: #fff;
+}
+
+.bg-color-secondary:hover{
+  background-color: #151d46;
+  color: #cecece;
+}
+
+body{
+  background-color: #202124ee;
+  color: #fff !important;
+}
+
+
+.bg-color-primary-light{
+  background-color: #FFF159 !important;
+}
+
+
+
+/* .type-dark{
+  background-color: #202124;
+  color:#ffffff;
+} */
+
+button{
+  color: #202124;
+}
+button:hover{
+  color: #233074;
+}
+
+

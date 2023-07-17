@@ -1,0 +1,104 @@
+const GetGrillaTiendaNube = async () => {
+  // var myHeaders = new Headers();
+  // myHeaders.append("Authentication", `bearer ${token_TN}`);
+  // myHeaders.append("User-Agent", `Your App Name (${appID_TN})`);
+
+  // var requestOptions = {
+  //   mode: "no-cors",
+  //   method: "GET",
+  //   headers: myHeaders,
+  //   redirect: "follow",
+  // };
+
+  // fetch("https://nuvemshop.com.br/apps/2696805/products", requestOptions)
+  //   .then((response) => response.text())
+  //   .then((result) => console.log(result))
+  //   .catch((error) => console.log("error", error));
+
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authentication",
+    "bearer 5b6a81a2ae02cf126bf2de80afbc6ed3d3feca87"
+  );
+  myHeaders.append("User-Agent", "Your App Name (5880)");
+
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  fetch(
+    "https://https://brunsel-productos.netlify.app/2696805/products",
+    requestOptions
+  )
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+
+  // try {
+  //  var myHeaders = new Headers();
+  //  myHeaders.append("Authentication", `Bearer ${token_TN}`);
+  //  myHeaders.append("User-Agent", `Your App Name ${appID_TN}`);
+
+  //   var requestOptions = {
+  //     mode: "no-cors",
+  //     method: "GET",
+  //     headers: myHeaders,
+  //     redirect: "follow",
+  //   };
+
+  //   const response = await fetch(
+  //     `https://api.nuvemshop.com.br/v1/${userID_TN}/products`,
+  //     requestOptions
+  //   );
+  //   const Datos = await response.json();
+
+  //   console.log(Datos);
+
+  //   let activo = "--";
+  //   let content = ``;
+
+  //   for (let i = 0; i < Datos.results.length; i++) {
+  //     const datos = Datos.results[i];
+  //     content += `
+  // 	<tbody>
+  // 		<tr>
+  // 			<th scope="row">${datos.id}</th>
+  // 			<td>${datos.name.es}</td>
+  // 			</td>
+  // 		</tr>
+  // 	<tbody>`;
+  //   }
+
+  //   tabla.innerHTML = content;
+  // } catch (ex) {}
+};
+
+let grillaTiendaNube = document.getElementById("btnProductosTiendaNube");
+grillaTiendaNube.addEventListener("click", () => {
+  GetGrillaTiendaNube();
+});
+
+{
+  /* <td><div class="input-group input-group-sm mb-3">
+  <button onclick="ModificacionPrecio2('${datos.id}', 'Precio')" class="input-group-text" id="inputGroup-sizing-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+</svg></button>
+<input type="number" id="txt_Precio_${datos.id}" autocapitalize="off" value="${datos.variants.price}" onclick="SeleccionPrecio2('${datos.id}')" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+</div></td>
+<td><div class="input-group input-group-sm mb-3">
+  <button onclick="ModificacionCantidad2('${datos.id}', 'Cantidad')" class="input-group-text" id="inputGroup-sizing-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+</svg></button>
+  <input type="number" id="txt_Cantidad_${datos.id}" value="${datos.variants.stock}" onclick="SeleccionCantidad2('${datos.id}')" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+</div></td>
+          <td>Activo</td>
+          <td><button id="btnModificar" class="btn" data-bs-toggle="modal" onclick="RealizarModificaciones2('${datos.id}')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+</svg></button></td>
+          <td><button id="btnInvertirEstado" class="btn" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+</svg></button></td> */
+}

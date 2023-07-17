@@ -1,0 +1,8 @@
+AppID_ML  ==  client_id
+var AppID_ML = "5516159463276910";
+let clientSecret_ML = "AiTu5HVpibu2xJfAuBQbUGGpkc917lae";
+https://goodapps.com.ar
+
+
+https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=$APP_ID&redirect_uri=$YOUR_URL&code_challenge=$CODE_CHALLENGE&code_challenge_method=$CODE_METHOD
+TG-64a41b2fceb41a0001f8fda1-530529180
