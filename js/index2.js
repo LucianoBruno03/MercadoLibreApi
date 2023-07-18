@@ -196,7 +196,7 @@ function SubirProductos(){
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer " + accessToken_ML);
   myHeaders.append("Content-Type", "application/json");
-if(TipoProducto.value != "" && IDCategoria.value != "" && Titulo.value != "" && Cantidad.value != "" && Precio.value != "" && Condicion.value != "" && Marca.value != "" && Modelo.value != ""){
+if(TipoProducto.value != "" && IDCategoria.value != "" && Titulo.value != "" && Cantidad.value != "" && Precio.value != "" && Condicion.value != ""){
   var valorGarantia
   Garantia.value != "Sin garantía" ? valorGarantia = `${TiempoGarantia.value} ${MedidaGarantia.value}`: valorGarantia = null;
 
@@ -232,11 +232,11 @@ if(TipoProducto.value != "" && IDCategoria.value != "" && Titulo.value != "" && 
     "attributes": [
       {
         "id": "BRAND",
-        "value_name": Marca.value
+        "value_name": "Soles Muebles"
       },
       {
         "id": "MODEL",
-        "value_name": Modelo.value
+        "value_name": "ICKK6921714"
       },
       {
         "id": "PRODUCT_TYPE",
@@ -245,7 +245,7 @@ if(TipoProducto.value != "" && IDCategoria.value != "" && Titulo.value != "" && 
       },
       {
         "id": "MANUFACTURER",
-        "value_name": Marca.value
+        "value_name": "Soles Mueblos"
       },
       {
         "id": "LINE", // traer del endpoint
@@ -344,7 +344,7 @@ if(TipoProducto.value != "" && IDCategoria.value != "" && Titulo.value != "" && 
       var Respuesta = JSON.parse(result);
       console.log(Respuesta)
       if(Descripcion != ""){
-        // CargaraDescripcion(Respuesta)
+        CargaraDescripcion(Respuesta.id)
       }
       LimpiarCampos();
     })
@@ -388,7 +388,6 @@ function CargarIdCategoria(){
   CargaCombosAtributos(Categorias.value)
 }
 
-
 function HabilitaTiempoGarantia(){
   if(Garantia.value != "Sin garantía"){
     MedidaGarantia.disabled = false;
@@ -406,7 +405,7 @@ function CargaraDescripcion(MercadoLibreId){
   myHeaders.append("Content-Type", "application/json");
   
   var raw = JSON.stringify({
-    "plain_text": "Cargando descripcion con api de mercado libre en Postman"
+    "plain_text": Descripcion.value
   });
   
   var requestOptions = {
@@ -424,37 +423,66 @@ function CargaraDescripcion(MercadoLibreId){
 
 
 
+
+var Atributos = []
 function CargaCombosAtributos(IDCategoria){
   var myHeaders = new Headers();
-myHeaders.append("Authorization", "Bearer " + accessToken_ML);
+  myHeaders.append("Authorization", "Bearer " + accessToken_ML);
 
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  redirect: 'follow'
-};
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
 
-fetch(`https://api.mercadolibre.com/categories/${IDCategoria}/attributes`, requestOptions)
-  .then(response => response.text())
-  .then(result => {
-    var Respuesta = JSON.parse(result);
-    console.log(Respuesta)
-    divAtributos.innerHTML = "";
-    Respuesta.forEach(element => {
-      divAtributos.innerHTML += 
-      `<div class="mt-3 form-group input-container col-12 col-md">
-        <select id="cbo_${element.name}" class="form-control form-control-user custom-input">
-          <option value="null" selected>No aplica</option>
-        </select>
-        <label for="cbo_${element.name}" class="input-label">${element.name}</label>
-      </div>`
-      var cbo = document.getElementById(`cbo_${element.name}`)
-      if(element.values != undefined && element.values != null && element.values != ""){
-      element.values.forEach(element2 => {
-        cbo.innerHTML += `<option value="${element2.id}">${element2.name}</option>`
-      });
+  fetch(`https://api.mercadolibre.com/categories/${IDCategoria}/attributes`, requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      var Respuesta = JSON.parse(result);
+      console.log(Respuesta)
+      divAtributos.innerHTML = "";
+      var contadorAtributos = 0
+      Respuesta.forEach(element => {
+        contadorAtributos++
+        if(contadorAtributos < 30){
+          if(element.id.includes("_WIDTH") || element.id.includes("_LENGTH") || element.id.includes("_HEIGHT") || element.id.includes("_WEIGHT"))return
+          if(element.values != undefined && element.values != null && element.values != "" && element.id != "MANUFACTURER" && element.id != "BRAND" && element.id != "MODEL"){
+            divAtributos.innerHTML += 
+            `<div class="mt-3 form-group input-container col-12 col-md">
+              <select id="${element.id}" class="form-control form-control-user custom-input" onchange="CargarArrayAtributos('${element.id}')">
+                <option value="null" selected>No aplica</option>
+              </select>
+              <label for="${element.id}" class="input-label">${element.name}</label>
+            </div>`
+            console.log(element.id)
+            var cbo = document.getElementById(`${element.id}`)
+            element.values.forEach(element2 => {
+              cbo.innerHTML += `<option value="${element2.name}">${element2.name}</option>`
+            })
+          }else{
+            divAtributos.innerHTML += 
+            `<div class="mt-3 form-group input-container col-12 col-md">
+              <input type="text" class="form-control form-control-user custom-input" id="${element.id}" placeholder="${element.id}" onchange="CargarArrayAtributos('${element.id}')">
+              <label for="${element.id}" class="input-label">${element.name}</label>
+            </div>`
+          }
+          Atributos.push({id: element.id, value_name: "null"})
+        }
+      })
+    })
+    .catch(error => console.log('error', error));
+    console.log(Atributos)
+}
+
+function CargarArrayAtributos(InputAtributoId){
+  console.log(InputAtributoId)
+
+  var InputAtributo = document.getElementById(InputAtributoId)
+  Atributos.forEach(element => {
+    console.warn(InputAtributo.value)
+    if(element.id == InputAtributoId){
+      element.value_name = InputAtributo.value
     }
-    });
   })
-  .catch(error => console.log('error', error));
+  console.log(Atributos)
 }
