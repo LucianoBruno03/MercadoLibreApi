@@ -445,6 +445,30 @@ fetch(`https://api.mercadolibre.com/categories/${IDCategoria}/attributes`, reque
     Respuesta[2].values.forEach(element => {
       Linea.innerHTML += `<option value=''>${element.name}</option>`
     })
+    var Color = document.getElementById("cbo_Color")
+    Color.innerHTML += "<option value='-1'>Seleccione un color</option><option value='-1'>No aplica</option>"
+    Respuesta[5].values.forEach(element => {
+      Color.innerHTML += `<option value=''>${element.name}</option>`
+    })
+    var Material = document.getElementById("cbo_Material")
+    Material.innerHTML += "<option value='-1'>Seleccione un material</option><option value='-1'>No aplica</option>"
+    Respuesta[7].values.forEach(element => {
+      Material.innerHTML += `<option value=''>${element.name}</option>`
+    })
+    var Reclinable = document.getElementById("cbo_Reclinable")
+    Respuesta[10].values.forEach(element => {
+      Reclinable.innerHTML += `<option value=''>${element.name}</option>`
+    })
+    var Linea = document.getElementById("cbo_Linea")
+    Linea.innerHTML += "<option value='-1'>Seleccione una línea</option><option value='-1'>No aplica</option>"
+    Respuesta[2].values.forEach(element => {
+      Linea.innerHTML += `<option value=''>${element.name}</option>`
+    })
+    var Linea = document.getElementById("cbo_Linea")
+    Linea.innerHTML += "<option value='-1'>Seleccione una línea</option><option value='-1'>No aplica</option>"
+    Respuesta[2].values.forEach(element => {
+      Linea.innerHTML += `<option value=''>${element.name}</option>`
+    })
   })
   .catch(error => console.log('error', error));
 }
