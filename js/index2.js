@@ -423,7 +423,7 @@ function CargaraDescripcion(MercadoLibreId){
 }
 
 
-
+var atributosCategoria
 function CargaCombosAtributos(IDCategoria){
   var myHeaders = new Headers();
 myHeaders.append("Authorization", "Bearer " + accessToken_ML);
@@ -439,20 +439,12 @@ fetch(`https://api.mercadolibre.com/categories/${IDCategoria}/attributes`, reque
   .then(result => {
     var Respuesta = JSON.parse(result);
     console.log(Respuesta)
-    divAtributos.innerHTML = "";
-    Respuesta.forEach(element => {
-      divAtributos.innerHTML += 
-      `<div class="mt-3 form-group input-container col-12 col-md">
-        <select id="cbo_${element.name}" class="form-control form-control-user custom-input">
-          <option value="null" selected>No aplica</option>
-        </select>
-        <label for="cbo_${element.name}" class="input-label">${element.name}</label>
-      </div>`
-      var cbo = document.getElementById(`cbo_${element.name}`)
-      element.values.forEach(element2 => {
-        cbo.innerHTML += `<option value="${element2.id}">${element2.name}</option>`
-      });
-    });
+    atributosCategoria = Respuesta
+    var Linea = document.getElementById("cbo_Linea")
+    Linea.innerHTML += "<option value='-1'>Seleccione una línea</option><option value='-1'>No aplica</option>"
+    Respuesta[2].values.forEach(element => {
+      Linea.innerHTML += `<option value=''>${element.name}</option>`
+    })
   })
   .catch(error => console.log('error', error));
 }
