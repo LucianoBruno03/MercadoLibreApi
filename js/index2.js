@@ -449,9 +449,11 @@ fetch(`https://api.mercadolibre.com/categories/${IDCategoria}/attributes`, reque
         <label for="cbo_${element.name}" class="input-label">${element.name}</label>
       </div>`
       var cbo = document.getElementById(`cbo_${element.name}`)
+      if(element.values != undefined && element.values != null && element.values != ""){
       element.values.forEach(element2 => {
         cbo.innerHTML += `<option value="${element2.id}">${element2.name}</option>`
       });
+    }
     });
   })
   .catch(error => console.log('error', error));
