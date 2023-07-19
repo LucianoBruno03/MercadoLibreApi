@@ -348,7 +348,7 @@ function CargaCombosAtributos(IDCategoria){
         Atributos.push({"id": element.id, "value_name": "null", "value_id": "-1"}): 
         Atributos.push({"id": element.id, "value_name": "null"}) 
         contadorAtributos++
-        if(contadorAtributos < 30){
+        if(contadorAtributos < 37){
           var Requerido = element.tags.catalog_required == true ? "is_Required" : ""
           var SimboloRequerido = element.tags.catalog_required == true ? " * " : ""
           if(element.id.includes("_WIDTH") || element.id.includes("_LENGTH") || element.id.includes("_HEIGHT") || element.id.includes("_WEIGHT") || element.id.includes("_DEPTH"))return
@@ -385,15 +385,17 @@ function CargarArrayAtributos(InputAtributoId){
   var InputAtributo = document.getElementById(InputAtributoId)
   Atributos.forEach(element => {
     console.warn(InputAtributo.value)
-    if(element.id == InputAtributoId){
+    if(element.id == InputAtributoId && InputAtributo.value != ""){
       if(element.id == "WIDTH" || element.id == "LENGTH" || element.id == "HEIGHT" || element.id == "DEPTH"){
         element.value_name = `${InputAtributo.value} m`
-        console
       }else{
+        element.id == "WEIGHT" ? 
+        element.value_name = `${InputAtributo.value} kg` :
         element.value_name = InputAtributo.value
       }
-      delete element.value_id
-    }else{
+      element.value_id = ""
+      // delete element.value_id
+    }else if(element.id == InputAtributoId && InputAtributo.value == ""){
       
     }
   })
