@@ -70,7 +70,7 @@
       </div>
       <div class="modal-body">
         <div class="mt-3 form-group input-container">
-          <input onchange="BuscarCategorias()" type="text" class="form-control form-control-user custom-input" id="txt_Producto" placeholder="Tipo de Producto">
+          <input type="text" class="form-control form-control-user custom-input" id="txt_Producto" placeholder="Tipo de Producto" onchange="BuscarCategorias()">
           <label for="txt_Producto" class="input-label">Tipo de Producto</label>
         </div>
         <div class="d-block d-md-flex gap-2">
@@ -153,112 +153,9 @@
           <textarea class="form-control form-control-user custom-input" id="txt_Descripcion" placeholder="Descripción" cols="80" rows="7" style="width: 100%;"></textarea>
           <label for="txt_Descripcion" class="input-label">Descripcion</label>
         </div>
-
-
-
-
-
-        <!-- <div class="d-flex align-items-center justify-content-between gap-2 no-wrap">
-          <div class="mt-3 form-group input-container col-12 col-md-6 p-0">
-            <input type="text" class="form-control form-control-user custom-input" id="txt_Marca" placeholder="Marca">
-            <label for="txt_Marca" class="input-label">Marca</label>
-          </div>
-          <div class="mt-3 form-group input-container col-12 col-md">
-            <input type="text" class="form-control form-control-user custom-input" id="txt_Modelo" placeholder="Modelo">
-            <label for="txt_Modelo" class="input-label">Modelo</label>
-          </div>
+        <div id="SeccionAtributos">
+        
         </div>
-
-
-
-
-
-
-
-        <div class="d-flex align-items-center justify-content-between gap-2 no-wrap">
-          <div class="mt-3 form-group input-container col-12 col-md-6 p-0">
-            <select id="cbo_MedidaGarantia" class="form-control form-control-user custom-input" disabled>
-              <option value="días">Días</option>
-              <option value="meses">Meses</option>
-              <option value="años">Años</option>
-            </select>
-            <label for="cbo_MedidaGarantia" class="input-label">Medida de Garantía</label>
-          </div>
-          <div class="mt-3 form-group input-container col-12 col-md">
-            <input type="text" class="form-control form-control-user custom-input" id="txt_Modelo" placeholder="Modelo">
-            <label for="txt_Modelo" class="input-label">Modelo</label>
-          </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-between gap-2 no-wrap">
-          <div class="mt-3 form-group input-container col-12 col-md-6 p-0">
-            <input type="text" class="form-control form-control-user custom-input" id="txt_Marca" placeholder="Marca">
-            <label for="txt_Marca" class="input-label">Marca</label>
-          </div>
-          <div class="mt-3 form-group input-container col-12 col-md">
-            <input type="text" class="form-control form-control-user custom-input" id="txt_Modelo" placeholder="Modelo">
-            <label for="txt_Modelo" class="input-label">Modelo</label>
-          </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-between gap-2 no-wrap">
-          <div class="mt-3 form-group input-container col-12 col-md-6 p-0">
-            <input type="text" class="form-control form-control-user custom-input" id="txt_Marca" placeholder="Marca">
-            <label for="txt_Marca" class="input-label">Marca</label>
-          </div>
-          <div class="mt-3 form-group input-container col-12 col-md">
-            <input type="text" class="form-control form-control-user custom-input" id="txt_Modelo" placeholder="Modelo">
-            <label for="txt_Modelo" class="input-label">Modelo</label>
-          </div>
-        </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="SeccionAtributos">
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn bg-color-secondary" data-bs-dismiss="modal">Close</button>
